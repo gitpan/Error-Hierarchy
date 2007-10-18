@@ -9,7 +9,7 @@ use Error::Hierarchy::Util 'load_class';
 use base 'Error::Hierarchy::Internal::DBI::H';
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # DBI exceptions store extra values, but don't use them in the message string.

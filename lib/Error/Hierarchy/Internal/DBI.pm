@@ -8,7 +8,7 @@ use strict;
 use base 'Error::Hierarchy::Internal::CustomMessage';
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 # DBI exceptions store extra values, but don't use them in the message string.

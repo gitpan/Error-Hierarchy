@@ -9,7 +9,7 @@ use Sys::Hostname;
 use base 'Error::Hierarchy::Base';
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 Error::Hierarchy

@@ -19,10 +19,11 @@ no_index:
 requires: 
   Class::Accessor::Complex: 0
   Data::Container: 0
+  Data::Inherited: 0
   Data::Miscellany: 0
   Data::UUID: 0
   Error: 0
   Sys::Hostname: 0
   Test::Exception: 0
   perl: 5.6.0
-version: 0.01
+version: 0.02

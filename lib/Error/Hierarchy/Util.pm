@@ -8,7 +8,7 @@ use Data::Miscellany 'is_defined';
 use Error::Hierarchy::Mixin;  # to get UNIVERSAL::throw()
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base 'Exporter';
