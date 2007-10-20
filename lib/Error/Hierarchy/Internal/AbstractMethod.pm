@@ -6,11 +6,11 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base qw(Error::Hierarchy::Internal Class::Accessor);
-Error::Hierarchy::Internal::AbstractMethod->mk_accessors(qw(method));
+__PACKAGE__->mk_accessors(qw(method));
 
 
 use constant default_message => 'called abstract method [%s]';
@@ -61,7 +61,7 @@ Error::Hierarchy::Internal::AbstractMethod - for unimplemented methods
   # or:
 
   use base 'Class::Accessor::Complex';
-  MyClass->mk_abstract_accessors(qw(not_there_yet));
+  __PACKAGE__->mk_abstract_accessors(qw(not_there_yet));
 
 =head1 DESCRIPTION
 

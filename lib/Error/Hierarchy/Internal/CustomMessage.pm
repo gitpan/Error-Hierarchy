@@ -6,12 +6,12 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Error::Hierarchy::Internal';
 
-Error::Hierarchy::Internal::CustomMessage->mk_accessors(qw(custom_message));
+__PACKAGE__->mk_accessors(qw(custom_message));
 
 use constant default_message => '%s';
 

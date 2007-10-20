@@ -9,14 +9,14 @@ use Error::Hierarchy::Util 'load_class';
 use base 'Error::Hierarchy::Internal::DBI::H';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # DBI exceptions store extra values, but don't use them in the message string.
 # They are marked as properties, however, so generic exception handling code
 # can introspect them.
 
-Error::Hierarchy::Internal::DBI::STH->mk_accessors(qw(
+__PACKAGE__->mk_accessors(qw(
     num_of_fields num_of_params field_names type precision scale
     nullable cursor_name param_values statement rows_in_cache
 ));

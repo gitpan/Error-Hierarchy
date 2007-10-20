@@ -7,14 +7,14 @@ use strict;
 use base 'Error::Hierarchy::Internal::DBI::H';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # DBI exceptions store extra values, but don't use them in the message string.
 # They are marked as properties, however, so generic exception handling code
 # can introspect them.
 
-Error::Hierarchy::Internal::DBI::DBH->mk_accessors(qw(
+__PACKAGE__->mk_accessors(qw(
     auto_commit db_name statement row_cache_size
 ));
 

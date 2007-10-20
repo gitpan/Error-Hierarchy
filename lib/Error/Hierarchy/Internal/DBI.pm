@@ -8,14 +8,14 @@ use strict;
 use base 'Error::Hierarchy::Internal::CustomMessage';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # DBI exceptions store extra values, but don't use them in the message string.
 # They are marked as properties, however, so generic exception handling code
 # can introspect them.
 
-Error::Hierarchy::Internal::DBI->mk_accessors(qw(
+__PACKAGE__->mk_accessors(qw(
     error err errstr state retval
 ));
 

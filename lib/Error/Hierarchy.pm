@@ -9,10 +9,10 @@ use Sys::Hostname;
 use base 'Error::Hierarchy::Base';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
-Error::Hierarchy
+__PACKAGE__
     ->mk_boolean_accessors(qw(is_optional acknowledged))
     ->mk_accessors(qw(
         message exception_hostname package filename line depth stacktrace uuid
@@ -118,7 +118,7 @@ Error::Hierarchy - support for hierarchical exception classes
 
     use base 'Error::Hierarchy';
 
-    Error::Hierarchy::ReadOnlyAttribute->mk_accessors(qw(attribute));
+    __PACKAGE__->mk_accessors(qw(attribute));
 
     use constant default_message => '[%s] is a read only attribute';
 

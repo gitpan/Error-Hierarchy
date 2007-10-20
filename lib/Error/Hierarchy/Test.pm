@@ -9,7 +9,7 @@ use Test::Exception;
 use Error ':try';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Exporter';

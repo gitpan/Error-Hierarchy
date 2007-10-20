@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base qw(
@@ -14,7 +14,7 @@ use base qw(
 );
 
 
-Error::Hierarchy::Base->mk_new;  # so we don't get Error::new()
+__PACKAGE__->mk_new;  # so we don't get Error::new()
 
 
 use overload

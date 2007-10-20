@@ -6,12 +6,12 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base 'Error::Hierarchy::Internal';
 
-Error::Hierarchy::Internal::Class->mk_accessors(qw(class_expected class_got));
+__PACKAGE__->mk_accessors(qw(class_expected class_got));
 
 use constant default_message => 'expected a [%s] object, got [%s]';
 

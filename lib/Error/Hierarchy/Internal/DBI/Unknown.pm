@@ -7,7 +7,7 @@ use strict;
 use base 'Error::Hierarchy::Internal::DBI';
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 1;
