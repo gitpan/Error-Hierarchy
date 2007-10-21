@@ -9,7 +9,7 @@ use warnings;
 use Data::Miscellany 'set_push';
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 # the exception container can be thrown as an exception as well, so inherit

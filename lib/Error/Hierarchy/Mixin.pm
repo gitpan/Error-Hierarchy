@@ -4,15 +4,17 @@ package Error::Hierarchy::Mixin;
 
 use strict;
 use warnings;
+use Error;    # to get $Error::Depth
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 BEGIN {
     *CORE::GLOBAL::die = sub (@) {
         # Error.pm die()s as well, but we don't want an endless recursion.
         CORE::die(@_) if (caller)[0] eq 'Error';
+        local $Error::Depth = $Error::Depth + 1;  # skip this level
         throw Error::Hierarchy::Internal::CustomMessage(
             custom_message => join(' ', @_),
         );
@@ -29,7 +31,6 @@ BEGIN {
 sub UNIVERSAL::throw {
     # use Data::Dumper; print Dumper \@_; exit if ++(our $cnt) > 5;
     my ($exception_class, %args) = @_;
-    $DB::single = 1;
 
     # need to modify $Error::Depth (see Error.pm) to make certain parts
     # of the call stack invisible to caller()
