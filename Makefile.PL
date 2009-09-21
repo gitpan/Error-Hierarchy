@@ -1,8 +1,10 @@
 use inc::Module::Install;
+include 'Module::AutoInstall';
 name 'Error-Hierarchy';
 all_from 'lib/Error/Hierarchy.pm';
-perl_version '5.006';
-
+auto_set_homepage;
+auto_set_bugtracker;
+auto_set_repository;
 requires 'Class::Accessor::Complex';
 requires 'Data::Container';
 requires 'Data::Inherited';
@@ -11,9 +13,24 @@ requires 'Data::UUID';
 requires 'Error';
 requires 'Sys::Hostname';
 requires 'Test::Exception';
+test_requires 'Test::More' => '0.70';
+extra_tests;
+author_requires 'ShipIt';
+author_requires 'ShipIt::Step::DistClean';
+author_requires 'ShipIt::Step::DistTestExtra';
+author_requires 'ShipIt::Step::Manifest';
+author_requires 'ShipIt::Step::Twitter';
+author_requires 'Test::Compile';
+author_requires 'Test::Perl::Critic';
+author_requires 'Test::Pod';
+author_requires 'Test::Spelling';
+author_requires 'Pod::Wordlist::hanekomu';
+author_requires 'Test::Pod::Coverage';
 
-build_requires 'Test::More' => '0.70';
-
-use_standard_tests(without => 'pod_coverage');
+# author_requires 'Test::Kwalitee';   # Attempt to free unreferenced scalar
+author_requires 'Test::YAML::Meta';
+author_requires 'Test::Portability::Files';
+author_requires 'Test::Synopsis';
+auto_install;
 auto_include;
 WriteAll;

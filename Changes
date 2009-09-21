@@ -1,16 +1,36 @@
-Revision history for Perl extension Error::Hierarchy
+Revision history for Perl extension Error-Hierarchy
 
-0.04  So Okt 21 20:01:49 CEST 2007
-        - Error::Hierarchy::Mixin's CORE::GLOBAL::die() now increases
-          $Error::Depth by one level to omit itself from the reported call
-          stack
+0.07 Fri Sep 18 13:54:18 MSZ 2009 (Marcel Gruenauer <marcel@cpan.org>)
+     - E::H::Mixin: our die() replacement calls CORE::die() if we get a blessed
+       exceptionas as well (fix for XML::LibXML)
+     - add documentation and fix synopsis
 
-0.03  Sa Okt 20 22:30:19 CEST 2007
-        - simplified accessor declaration
+0.06  Thu Jul 25 15:27:43 CEST 2008 (Marcel Gruenauer <marcel@cpan.org>)
+     - Changed dist style and Changes back to standard. People didn't like it -
+       the nail that sticks out gets hammered down.
+     - Added standard test files; this will also help with CPANTS.
 
-0.02  Do Okt 18 10:09:39 CEST 2007
-        - fixed version requirement of Test::More
+0.05  Thu, 29 May 2008 12:04:44 -0000 (Marcel Gruenauer <marcel@cpan.org>)
+     - Converted Changes file to YAML style
+     - .shipit: added Twitter step
+     - Makefile.PL: added auto_install() and process_templates()
+     - lib/*: converted to template
+     - updated MANIFEST
+     - updated t/perlcriticrc
+     - moved generated documentation of interited methods to after
+       documentation of this class' methods so the manpage is more readable
+     - .shipit: fixed svk.tagpattern
+     - tags: NEWFEATURE
 
-0.01  Mi Okt 17 14:03:41 CEST 2007
-        - original version
+0.04  Sun, 21 Oct 2007 20:01:49 +0200 (Marcel Gruenauer <marcel@cpan.org>)
+     - Error::Hierarchy::Mixin's CORE::GLOBAL::die() now increases
+       $Error::Depth by one level to omit itself from the reported call stack
 
+0.03  Sat, 20 Oct 2007 22:30:19 +0200 (Marcel Gruenauer <marcel@cpan.org>)
+     - simplified accessor declaration
+
+0.02  Thu, 18 Oct 2007 10:09:39 +0200 (Marcel Gruenauer <marcel@cpan.org>)
+     - fixed version requirement of Test::More
+
+0.01  Wed, 17 Oct 2007 14:03:41 +0200 (Marcel Gruenauer <marcel@cpan.org>)
+     - original version

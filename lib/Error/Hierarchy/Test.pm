@@ -1,31 +1,15 @@
 package Error::Hierarchy::Test;
-
-# $Id: Test.pm 11949 2006-08-09 15:25:04Z gr $
-
 use warnings;
 use strict;
 use Test::Builder;
 use Test::Exception;
 use Error ':try';
-
-
-our $VERSION = '0.04';
-
-
+our $VERSION = '0.07';
 use base 'Exporter';
-
-
-our %EXPORT_TAGS = (
-    misc => [ qw{throws2_ok exception_ok} ],
-);
-
+our %EXPORT_TAGS = (misc => [qw{throws2_ok exception_ok}],);
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };
-
 my $Tester = Test::Builder->new;
-
-
 *_exception_as_string = *Test::Exception::_exception_as_string;
-
 
 sub exception_ok ($$$;$) {
     my ($E, $class, $content, $test_name) = @_;
@@ -34,20 +18,18 @@ sub exception_ok ($$$;$) {
         $E = $E->shift_items;
     }
     my $ok = ref $E eq $class;
-    $ok &&= ref $content eq 'Regexp'
-                ? $E =~ m/$content/
-                : $E eq $content;
+    $ok &&=
+      ref $content eq 'Regexp'
+      ? $E =~ m/$content/
+      : $E eq $content;
     $test_name ||= _exception_as_string(threw => $class);
     $Tester->ok($ok, $test_name);
     unless ($ok) {
-        $Tester->diag(_exception_as_string(
-            'expecting:', "$class ($content)"
-        ));
-        $Tester->diag(_exception_as_string('found:', $E));
-    };
+        $Tester->diag(_exception_as_string('expecting:', "$class ($content)"));
+        $Tester->diag(_exception_as_string('found:',     $E));
+    }
     $ok;
 }
-
 
 sub throws2_ok (&$$;$) {
     my ($sub, $class, $content, $test_name) = @_;
@@ -55,23 +37,20 @@ sub throws2_ok (&$$;$) {
     my ($E, $ok);
     try {
         &$sub;
-    } catch Error with {
+    }
+    catch Error with {
         $E = shift;
         exception_ok($E, $class, $content, $test_name);
-    } finally {
+    }
+    finally {
         unless (defined $E) {
             $Tester->ok(0, $test_name);
             $Tester->diag('did not throw an exception');
         }
     };
-
     $ok;
-};
-
-
+}
 1;
-
-
 __END__
 
 =head1 NAME
@@ -80,9 +59,8 @@ Error::Hierarchy::Test - tools to test hierarchical exceptions
 
 =head1 SYNOPSIS
 
-  use Error::Hierarchy::Test 'throws2_ok';
   throws2_ok {
-      ...
+      # ...
   }, 'Some::Exception',
      qr/text that \s* appears in the exception message/,
      "this test's name";
@@ -95,7 +73,7 @@ This module provides some tools that help in testing hierarchical exceptions.
 
 =over 4
 
-=item exception_ok
+=item C<exception_ok>
 
 Takes as arguments in the given order: an exception object, a class name, the
 expected content and optionally a test name.
@@ -114,7 +92,7 @@ If the test name is not given, the stringified exception is used.
 Otherwise it behaves like L<Test::More>'s C<ok()>. If the test was not ok, a
 diagnostic is printed.
 
-=item throws2_ok
+=item C<throws2_ok>
 
 Takes as arguments in the given order: A code reference, a class name, the
 expected content and optionally a test name.
@@ -127,17 +105,11 @@ no exception was thrown.
 
 =back
 
-=head1 TAGS
-
-If you talk about this module in blogs, on del.icio.us or anywhere else, please
-use the C<errorhierarchy> tag.
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
-Please report any bugs or feature requests to
-C<bug-error-hierarchy@rt.cpan.org>, or through the web interface at
+Please report any bugs or feature requests through the web interface at
 L<http://rt.cpan.org>.
 
 =head1 INSTALLATION
@@ -147,19 +119,20 @@ See perlmodinstall for information and options on installing Perl modules.
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN site
-near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007 by Marcel GrE<uuml>nauer
+Copyright 2004-2009 by the authors.
 
-This library is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
 
 =cut
 
