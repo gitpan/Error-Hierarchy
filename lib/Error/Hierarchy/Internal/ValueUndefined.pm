@@ -1,7 +1,7 @@
 package Error::Hierarchy::Internal::ValueUndefined;
 use warnings;
 use strict;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Error::Hierarchy::Internal::CustomMessage';
 1;
 __END__

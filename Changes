@@ -1,5 +1,8 @@
 Revision history for Perl extension Error-Hierarchy
 
+0.08 Thu 2009.10.29 16:51:10 CET (Marcel Gruenauer <marcel@cpan.org>)
+     - added assert_enum
+
 0.07 Fri Sep 18 13:54:18 MSZ 2009 (Marcel Gruenauer <marcel@cpan.org>)
      - E::H::Mixin: our die() replacement calls CORE::die() if we get a blessed
        exceptionas as well (fix for XML::LibXML)

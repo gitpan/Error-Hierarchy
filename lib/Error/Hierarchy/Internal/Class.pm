@@ -1,7 +1,7 @@
 package Error::Hierarchy::Internal::Class;
 use warnings;
 use strict;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Error::Hierarchy::Internal';
 __PACKAGE__->mk_accessors(qw(class_expected class_got));
 use constant default_message => 'expected a [%s] object, got [%s]';

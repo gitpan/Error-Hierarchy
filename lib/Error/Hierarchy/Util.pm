@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Data::Miscellany 'is_defined';
 use Error::Hierarchy::Mixin;    # to get UNIVERSAL::throw()
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Exporter';
 our %EXPORT_TAGS = (
     ref => [
@@ -15,7 +15,7 @@ our %EXPORT_TAGS = (
     misc => [
         qw{
           assert_class assert_defined assert_read_only assert_is_integer
-          assert_getopt load_class
+          assert_getopt assert_enum load_class
           }
     ],
 );
@@ -152,6 +152,15 @@ sub loader_callback {
         $loader_callback = $callback;
     }
     $loader_callback;
+}
+
+sub assert_enum {
+    my ($val, $enum_arrayref, $custom_message) = @_;
+    for my $valid_value (@$enum_arrayref) {
+        return if $val eq $valid_value;
+    }
+    throw Error::Hierarchy::Internal::CustomMessage(
+        custom_message => "$custom_message: invalid value [$val]")
 }
 
 sub load_class ($$) {
@@ -314,6 +323,12 @@ function can be called to verify options passed to it. If the value given is
 true, we just return. If it is false, we throw a special "help exception".
 
 This should be moved to C<Data::Conveyor>.
+
+=item C<assert_enum()>
+
+Takes a value and a reference to an array of valid values - that is, the
+enumeration. If the value is not among the enumerated valid values, an
+exception is thrown.
 
 =item C<loader_callback($coderef)>
 

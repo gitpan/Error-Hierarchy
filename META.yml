@@ -34,4 +34,4 @@ resources:
   homepage: http://search.cpan.org/dist/Error-Hierarchy/
   license: http://dev.perl.org/licenses/
   repository: git://github.com/hanekomu/error-hierarchy.git
-version: 0.07
+version: 0.08

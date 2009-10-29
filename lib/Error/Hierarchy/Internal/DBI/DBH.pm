@@ -2,7 +2,7 @@ package Error::Hierarchy::Internal::DBI::DBH;
 use warnings;
 use strict;
 use base 'Error::Hierarchy::Internal::DBI::H';
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 # DBI exceptions store extra values, but don't use them in the message string.
 # They are marked as properties, however, so generic exception handling code

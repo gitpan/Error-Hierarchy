@@ -4,7 +4,7 @@ package Error::Hierarchy::Container;
 use strict;
 use warnings;
 use Data::Miscellany 'set_push';
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 # the exception container can be thrown as an exception as well, so inherit
 # from Error::Hierarchy::Base first (so we get its new(), not the one from

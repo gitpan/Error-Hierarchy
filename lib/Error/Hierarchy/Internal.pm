@@ -5,7 +5,7 @@ package Error::Hierarchy::Internal;
 # class where appropriate.
 use warnings;
 use strict;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Error::Hierarchy';
 use constant PROPERTIES => (qw/package filename line/);
 sub is_optional { 0 }

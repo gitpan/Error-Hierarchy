@@ -1,7 +1,7 @@
 package Error::Hierarchy::Internal::ReadOnlyAttribute;
 use warnings;
 use strict;
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Error::Hierarchy::Internal';
 __PACKAGE__->mk_accessors(qw(attribute));
 use constant default_message => '[%s] is a read only attribute';

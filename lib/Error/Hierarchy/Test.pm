@@ -4,7 +4,7 @@ use strict;
 use Test::Builder;
 use Test::Exception;
 use Error ':try';
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 use base 'Exporter';
 our %EXPORT_TAGS = (misc => [qw{throws2_ok exception_ok}],);
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} = [ map { @$_ } values %EXPORT_TAGS ] };

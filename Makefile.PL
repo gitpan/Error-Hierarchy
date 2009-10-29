@@ -2,6 +2,8 @@ use inc::Module::Install;
 include 'Module::AutoInstall';
 name 'Error-Hierarchy';
 all_from 'lib/Error/Hierarchy.pm';
+readme_from_pod;
+readme_markdown_from_pod;
 auto_set_homepage;
 auto_set_bugtracker;
 auto_set_repository;
