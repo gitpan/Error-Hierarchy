@@ -6,7 +6,7 @@ use Carp;
 use Data::UUID;
 use Sys::Hostname;
 use base 'Error::Hierarchy::Base';
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 #<<<
 __PACKAGE__
     ->mk_boolean_accessors(qw(is_optional acknowledged))

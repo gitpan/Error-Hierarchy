@@ -1,7 +1,7 @@
 package Error::Hierarchy::Internal::AbstractMethod;
 use warnings;
 use strict;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 use base qw(Error::Hierarchy::Internal Class::Accessor);
 __PACKAGE__->mk_accessors(qw(method));
 use constant default_message => 'called abstract method [%s]';

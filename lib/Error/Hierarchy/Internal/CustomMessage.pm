@@ -1,7 +1,7 @@
 package Error::Hierarchy::Internal::CustomMessage;
 use warnings;
 use strict;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 use base 'Error::Hierarchy::Internal';
 __PACKAGE__->mk_accessors(qw(custom_message));
 use constant default_message => '%s';

@@ -2,7 +2,7 @@ package Error::Hierarchy::Internal::DBI::DRH;
 use warnings;
 use strict;
 use base 'Error::Hierarchy::Internal::DBI::H';
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 1;
 __END__
 

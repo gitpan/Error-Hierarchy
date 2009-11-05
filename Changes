@@ -1,5 +1,8 @@
 Revision history for Perl extension Error-Hierarchy
 
+0.09 Thu 2009.11.05 15:54:28 CET (Marcel Gruenauer <marcel@cpan.org>)
+     - performance tuning
+
 0.08 Thu 2009.10.29 16:51:10 CET (Marcel Gruenauer <marcel@cpan.org>)
      - added assert_enum
 

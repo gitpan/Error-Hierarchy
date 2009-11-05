@@ -2,7 +2,7 @@ package Error::Hierarchy::Mixin;
 use strict;
 use warnings;
 use Error;    # to get $Error::Depth
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 BEGIN {
     *CORE::GLOBAL::die = sub (@) {
