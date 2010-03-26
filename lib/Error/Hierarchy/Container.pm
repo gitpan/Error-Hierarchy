@@ -1,18 +1,19 @@
-package Error::Hierarchy::Container;
-
-# implements a container object.
+use 5.008;
 use strict;
 use warnings;
+
+package Error::Hierarchy::Container;
+our $VERSION = '1.100850';
+# ABSTRACT: Container for hierarchical exceptions
 use Data::Miscellany 'set_push';
-our $VERSION = '0.09';
 
 # the exception container can be thrown as an exception as well, so inherit
 # from Error::Hierarchy::Base first (so we get its new(), not the one from
 # Data::Container)
-use base qw/
+use parent qw(
   Data::Container
   Error::Hierarchy::Base
-  /;
+);
 
 sub record {
     my ($self, $exception_class, %args) = @_;
@@ -31,11 +32,18 @@ sub delete_by_uuid {
     $self->items(grep { !exists $uuid{$_} } $self->items);
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Error::Hierarchy::Container - container for hierarchical exceptions
+Error::Hierarchy::Container - Container for hierarchical exceptions
+
+=head1 VERSION
+
+version 1.100850
 
 =head1 SYNOPSIS
 
@@ -56,9 +64,7 @@ effectively a L<Data::Container> but also has the following methods.
 
 =head1 METHODS
 
-=over 4
-
-=item C<record>
+=head2 record
 
 Takes an exception class name (a string) and a hash of arguments. First the
 exception is constructed with the given arguments, then it is added - using
@@ -66,89 +72,44 @@ C<items_set_push()> - to the container. It's really a shortcut that saves you
 from having to record the exception and then adding it to the container
 yourself.
 
-=item C<delete_by_uuid>
+=head2 delete_by_uuid
 
 Takes a list of uuid values and deletes all those exceptions from the
 container whose uuid appears in the given list.
 
-=back
+=head1 INSTALLATION
 
-Error::Hierarchy::Container inherits from L<Data::Container> and
-L<Error::Hierarchy::Base>.
-
-The superclass L<Data::Container> defines these methods and functions:
-
-    new(), clear_items(), count_items(), index_items(), item_grep(),
-    items(), items_clear(), items_count(), items_index(), items_pop(),
-    items_push(), items_set(), items_set_push(), items_shift(),
-    items_splice(), items_unshift(), pop_items(), prepare_comparable(),
-    push_items(), set_items(), shift_items(), splice_items(), stringify(),
-    unshift_items()
-
-The superclass L<Class::Accessor::Complex> defines these methods and
-functions:
-
-    mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
-    mk_class_array_accessors(), mk_class_hash_accessors(),
-    mk_class_scalar_accessors(), mk_concat_accessors(),
-    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-    mk_set_accessors(), mk_singleton()
-
-The superclass L<Class::Accessor> defines these methods and functions:
-
-    _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-    mk_wo_accessors(), mutator_name_for(), set()
-
-The superclass L<Class::Accessor::Installer> defines these methods and
-functions:
-
-    install_accessor()
-
-The superclass L<Error::Hierarchy::Base> defines these methods and
-functions:
-
-    dump_as_yaml(), dump_raw()
-
-The superclass L<Error> defines these methods and functions:
-
-    _throw_Error_Simple(), associate(), catch(), file(), flush(), import(),
-    line(), object(), prior(), stacktrace(), text(), throw(), value(),
-    with()
-
-The superclass L<Data::Inherited> defines these methods and functions:
-
-    every_hash(), every_list(), flush_every_cache_by_key()
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-=head1 AUTHORS
+The development version lives at
+L<http://github.com/hanekomu/Error-Hierarchy/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+=head1 AUTHOR
+
+  Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2004 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+

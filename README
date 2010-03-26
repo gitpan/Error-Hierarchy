@@ -1,6 +1,9 @@
 NAME
     Error::Hierarchy - Support for hierarchical exception classes
 
+VERSION
+    version 1.100850
+
 SYNOPSIS
         package Error::Hierarchy::ReadOnlyAttribute;
 
@@ -39,212 +42,111 @@ DESCRIPTION
     your own exceptions might define.
 
 METHODS
-    "depth()"
-        Get or set the caller depth, that is the number of call stack frames
-        that are skipped when reporting the package, filename and line the
-        error was thrown from. When an exception object is constructed, it
-        defaults to 0. This is useful if you want to throw an exception from
-        the perspective of your own caller. For example:
+  depth
+    Get or set the caller depth, that is the number of call stack frames
+    that are skipped when reporting the package, filename and line the error
+    was thrown from. When an exception object is constructed, it defaults to
+    0. This is useful if you want to throw an exception from the perspective
+    of your own caller. For example:
 
-            sub assert_foo {
-                unless ($teh_foo) {
-                    throw SomeException(depth => 1);
-                }
+        sub assert_foo {
+            unless ($teh_foo) {
+                throw SomeException(depth => 1);
             }
+        }
 
-        Without the "depth" argument, the exception would show that it was
-        thrown within "assert_foo()". Maybe that's what you want, but with
-        "depth()" you can make it appear as if the exception was thrown from
-        the place where "assert_foo()" was called from.
+    Without the "depth" argument, the exception would show that it was
+    thrown within "assert_foo()". Maybe that's what you want, but with
+    "depth()" you can make it appear as if the exception was thrown from the
+    place where "assert_foo()" was called from.
 
-        The actual exception depth is influenced by "error_depth()" as well.
+    The actual exception depth is influenced by "error_depth()" as well.
 
-    "error_depth()"
-        Like "depth()", but here the value should be defined within the
-        exception class code itself. Therefore, you can't set the value, but
-        subclasses can override it. Some exceptions should always be thrown
-        from the caller's perspective (or even higher up); use
-        "error_depth()" for this case. "depth()" by contrast is intended for
-        the user to be set; the two are added together to get the actual
-        depth. In this class the "error_depth()" defaults to 1 so the
-        exception is at least reported from the place where it was actually
-        thrown - a value of 0 would mean that the exception is reported as
-        having occurred Error::Hierarchy itself, which is probably not what
-        you want.
+  error_depth
+    Like "depth()", but here the value should be defined within the
+    exception class code itself. Therefore, you can't set the value, but
+    subclasses can override it. Some exceptions should always be thrown from
+    the caller's perspective (or even higher up); use "error_depth()" for
+    this case. "depth()" by contrast is intended for the user to be set; the
+    two are added together to get the actual depth. In this class the
+    "error_depth()" defaults to 1 so the exception is at least reported from
+    the place where it was actually thrown - a value of 0 would mean that
+    the exception is reported as having occurred Error::Hierarchy itself,
+    which is probably not what you want.
 
-        If you override this value in a subclass, it's probably a good idea
-        to add the subclass' desired depth to the superclass's depth to
-        accumulate it. For example:
+    If you override this value in a subclass, it's probably a good idea to
+    add the subclass' desired depth to the superclass's depth to accumulate
+    it. For example:
 
-            package MyException;
-            use base 'Error::Hierarchy';
-            sub error_depth {
-                my $self = shift;
-                1 + $self->SUPER::error_depth();
-            }
+        package MyException;
+        use base 'Error::Hierarchy';
+        sub error_depth {
+            my $self = shift;
+            1 + $self->SUPER::error_depth();
+        }
 
-    "comparable()"
-        Support for Data::Comparable.
+  comparable
+    Support for Data::Comparable.
 
-    "init()"
-        Initializes a newly constructed exception object.
+  init
+    Initializes a newly constructed exception object.
 
-    "get_properties()"
-        Actual exception classes will subclass this class and define
-        properties. Exception classes themselves can be subclassed. So this
-        method returns the inherited list of all the exception class'
-        properties.
+  get_properties
+    Actual exception classes will subclass this class and define properties.
+    Exception classes themselves can be subclassed. So this method returns
+    the inherited list of all the exception class' properties.
 
-    "properties_as_hash()"
-        Constructs a hash whose keys are the exception's properties - see
-        "get_properties()" - and whose values are the values of each
-        property in the exception object. The properties "package",
-        "filename" and "line" are omitted.
+  properties_as_hash
+    Constructs a hash whose keys are the exception's properties - see
+    "get_properties()" - and whose values are the values of each property in
+    the exception object. The properties "package", "filename" and "line"
+    are omitted.
 
-        In list context, the hash is returned as is. In scalar context, a
-        reference to the hash is returned.
+    In list context, the hash is returned as is. In scalar context, a
+    reference to the hash is returned.
 
-    "stringify()"
-        Defines how the exception should look if the object is stringified.
-        This class inherits from Error::Hierarchy::Base, which overloads ""
-        to call "stringify()".
+  stringify
+    Defines how the exception should look if the object is stringified. This
+    class inherits from Error::Hierarchy::Base, which overloads "" to call
+    "stringify()".
 
-        This class stringifies an itself by taking the "message()" attribute
-        and passing it to "sprintf()", along with the exception's
-        properties.
+    This class stringifies an itself by taking the "message()" attribute and
+    passing it to "sprintf()", along with the exception's properties.
 
-    "transmute($exception, %args)"
-        Transmutes an existing exception. It leaves the stack trace,
-        filename, line etc. as it is and just blesses it into the class on
-        which "transmute()" was called, adding the given additional
-        arguments. This is used when catching a generic exception and
-        turning it into a more specific one.
-
-    "acknowledged"
-            $obj->acknowledged($value);
-            my $value = $obj->acknowledged;
-
-        If called without an argument, returns the boolean value (0 or 1).
-        If called with an argument, it normalizes it to the boolean value.
-        That is, the values 0, undef and the empty string become 0;
-        everything else becomes 1.
-
-    "acknowledged_clear"
-            $obj->acknowledged_clear;
-
-        Clears the boolean value by setting it to 0.
-
-    "acknowledged_set"
-            $obj->acknowledged_set;
-
-        Sets the boolean value to 1.
-
-    "clear_acknowledged"
-            $obj->clear_acknowledged;
-
-        Clears the boolean value by setting it to 0.
-
-    "clear_is_optional"
-            $obj->clear_is_optional;
-
-        Clears the boolean value by setting it to 0.
-
-    "is_optional"
-            $obj->is_optional($value);
-            my $value = $obj->is_optional;
-
-        Defines whether the exception is optional or mandatory. This isn't
-        really part of the exception itself, it has to do more with how you
-        process the exception. You might want to treat some exceptions as
-        more important than others. But it's nice to be able to set it
-        within the exception object.
-
-        If called without an argument, returns the boolean value (0 or 1).
-        If called with an argument, it normalizes it to the boolean value.
-        That is, the values 0, undef and the empty string become 0;
-        everything else becomes 1.
-
-    "is_optional_clear"
-            $obj->is_optional_clear;
-
-        Clears the boolean value by setting it to 0.
-
-    "is_optional_set"
-            $obj->is_optional_set;
-
-        Sets the boolean value to 1.
-
-    "set_acknowledged"
-            $obj->set_acknowledged;
-
-        Sets the boolean value to 1.
-
-    "set_is_optional"
-            $obj->set_is_optional;
-
-        Sets the boolean value to 1.
-
-    Error::Hierarchy inherits from Error::Hierarchy::Base.
-
-    The superclass Error::Hierarchy::Base defines these methods and
-    functions:
-
-        new(), dump_as_yaml(), dump_raw()
-
-    The superclass Error defines these methods and functions:
-
-        _throw_Error_Simple(), associate(), catch(), file(), flush(), import(),
-        object(), prior(), record(), text(), throw(), value(), with()
-
-    The superclass Data::Inherited defines these methods and functions:
-
-        every_hash(), every_list(), flush_every_cache_by_key()
-
-    The superclass Class::Accessor::Complex defines these methods and
-    functions:
-
-        mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
-        mk_class_array_accessors(), mk_class_hash_accessors(),
-        mk_class_scalar_accessors(), mk_concat_accessors(),
-        mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-        mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-        mk_set_accessors(), mk_singleton()
-
-    The superclass Class::Accessor defines these methods and functions:
-
-        _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-        best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-        follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-        make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-        mk_wo_accessors(), mutator_name_for(), set()
-
-    The superclass Class::Accessor::Installer defines these methods and
-    functions:
-
-        install_accessor()
-
-BUGS AND LIMITATIONS
-    No bugs have been reported.
-
-    Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org>.
+  transmute($exception, %args)
+    Transmutes an existing exception. It leaves the stack trace, filename,
+    line etc. as it is and just blesses it into the class on which
+    "transmute()" was called, adding the given additional arguments. This is
+    used when catching a generic exception and turning it into a more
+    specific one.
 
 INSTALLATION
     See perlmodinstall for information and options on installing Perl
     modules.
 
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
+
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
-    CPAN site near you. Or see
+    CPAN site near you, or see
     <http://search.cpan.org/dist/Error-Hierarchy/>.
 
-AUTHORS
-    Marcel Grünauer, "<marcel@cpan.org>"
+    The development version lives at
+    <http://github.com/hanekomu/Error-Hierarchy/>. Instead of sending
+    patches, please fork this project using the standard git and github
+    infrastructure.
+
+AUTHOR
+      Marcel Gruenauer <marcel@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2004-2009 by the authors.
+    This software is copyright (c) 2004 by Marcel Gruenauer.
 
-    This library is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself.
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 

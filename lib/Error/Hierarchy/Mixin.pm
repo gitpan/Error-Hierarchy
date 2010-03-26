@@ -1,8 +1,11 @@
-package Error::Hierarchy::Mixin;
+use 5.008;
 use strict;
 use warnings;
+
+package Error::Hierarchy::Mixin;
+our $VERSION = '1.100850';
+# ABSTRACT: Provides often-used exception-related methods
 use Error;    # to get $Error::Depth
-our $VERSION = '0.09';
 
 BEGIN {
     *CORE::GLOBAL::die = sub (@) {
@@ -51,11 +54,18 @@ sub UNIVERSAL::record {
     $exception_class->record(%args);
 }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
-Error::Hierarchy::Mixin - provides often-used exception-related methods
+Error::Hierarchy::Mixin - Provides often-used exception-related methods
+
+=head1 VERSION
+
+version 1.100850
 
 =head1 SYNOPSIS
 
@@ -75,50 +85,51 @@ C<die()>, use C<CORE::die()> instead.
 
 =head1 METHODS
 
-=over 4
-
-=item C<throw>
+=head2 throw
 
 Takes an exception class name (a string) and a hash of arguments. Loads the
 exception class, constructs an exception object, passes it the arguments and
 throws it by calling the exception object's C<throw()> method. It populates
 the UNIVERSAL namespace, so all packages get this ability.
 
-=item C<record>
+=head2 record
 
 Like C<throw()>, but records the exception using the exception object's
 C<record()> method.
 
-=back
+=head1 INSTALLATION
 
-Error::Hierarchy::Mixin inherits from .
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-=head1 AUTHORS
+The development version lives at
+L<http://github.com/hanekomu/Error-Hierarchy/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+=head1 AUTHOR
+
+  Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2004 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+

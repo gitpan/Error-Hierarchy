@@ -1,8 +1,11 @@
-package Error::Hierarchy::Internal::DBI;
-use warnings;
+use 5.008;
 use strict;
-use base 'Error::Hierarchy::Internal::CustomMessage';
-our $VERSION = '0.09';
+use warnings;
+
+package Error::Hierarchy::Internal::DBI;
+our $VERSION = '1.100850';
+# ABSTRACT: DBI-related exception
+use parent 'Error::Hierarchy::Internal::CustomMessage';
 
 # DBI exceptions store extra values, but don't use them in the message string.
 # They are marked as properties, however, so generic exception handling code
@@ -28,7 +31,6 @@ sub init {
     # to emit a warning by overriding that method.
     $self->emit_warning;
 }
-
 sub transmute_exception { $_[0] }
 
 # Warn the exception so we see it while testing (otherwise it might be
@@ -150,13 +152,18 @@ sub handler {
     };
 }
 1;
+
+
 __END__
-
-
+=pod
 
 =head1 NAME
 
 Error::Hierarchy::Internal::DBI - DBI-related exception
+
+=head1 VERSION
+
+version 1.100850
 
 =head1 SYNOPSIS
 
@@ -172,6 +179,29 @@ Error::Hierarchy::Internal::DBI - DBI-related exception
 This class is the main part of the DBI-related exceptions. If you set it as
 the error handler in a C<DBI->connect()> call, it will turn the simple string
 errors thrown by DBI (and the database) into more meaningful exceptions.
+
+=head1 METHODS
+
+=head2 init
+
+Initializes a newly constructed exception object. It transmutes the exception,
+then calls C<emit_warning()> on the object.
+
+=head2 transmute_exception
+
+Give subclasses a chance to turn generic DBI exceptions into something more
+specific for their database schema. This method is supposed to bless the
+exception into the desired package or create a new one and must return it; it
+is called in C<init()>.
+
+=head2 emit_warning
+
+Warns via C<warn()> unless the package global C<SkipWarning> is set.
+
+=head2 handler
+
+Turns the DBI error into the appropriate C<Error::Hierarchy::Internal::DBI::*>
+exception object.
 
 =head1 PROPERTIES
 
@@ -194,114 +224,39 @@ It has the following additional properties.
 
 =back
 
-=head1 METHODS
+=head1 INSTALLATION
 
-=over 4
-
-=item C<init()>
-
-Initializes a newly constructed exception object. It transmutes the exception,
-then calls C<emit_warning()> on the object.
-
-=item C<transmute_exception()>
-
-Give subclasses a chance to turn generic DBI exceptions into something more
-specific for their database schema. This method is supposed to bless the
-exception into the desired package or create a new one and must return it; it
-is called in C<init()>.
-
-=item C<emit_warning()>
-
-Warns via C<warn()> unless the package global C<SkipWarning> is set.
-
-=item C<handler()>
-
-Turns the DBI error into the appropriate C<Error::Hierarchy::Internal::DBI::*>
-exception object.
-
-=back
-
-Error::Hierarchy::Internal::DBI inherits from
-L<Error::Hierarchy::Internal::CustomMessage>.
-
-The superclass L<Error::Hierarchy::Internal> defines these methods and
-functions:
-
-    is_optional(), stringify()
-
-The superclass L<Error::Hierarchy> defines these methods and functions:
-
-    acknowledged(), acknowledged_clear(), acknowledged_set(),
-    clear_acknowledged(), clear_is_optional(), comparable(), error_depth(),
-    get_properties(), is_optional_clear(), is_optional_set(),
-    properties_as_hash(), set_acknowledged(), set_is_optional(),
-    transmute()
-
-The superclass L<Error::Hierarchy::Base> defines these methods and
-functions:
-
-    new(), dump_as_yaml(), dump_raw()
-
-The superclass L<Error> defines these methods and functions:
-
-    _throw_Error_Simple(), associate(), catch(), file(), flush(), import(),
-    object(), prior(), record(), text(), throw(), value(), with()
-
-The superclass L<Data::Inherited> defines these methods and functions:
-
-    every_hash(), every_list(), flush_every_cache_by_key()
-
-The superclass L<Class::Accessor::Complex> defines these methods and
-functions:
-
-    mk_abstract_accessors(), mk_array_accessors(), mk_boolean_accessors(),
-    mk_class_array_accessors(), mk_class_hash_accessors(),
-    mk_class_scalar_accessors(), mk_concat_accessors(),
-    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-    mk_set_accessors(), mk_singleton()
-
-The superclass L<Class::Accessor> defines these methods and functions:
-
-    _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-    mk_wo_accessors(), mutator_name_for(), set()
-
-The superclass L<Class::Accessor::Installer> defines these methods and
-functions:
-
-    install_accessor()
+See perlmodinstall for information and options on installing Perl modules.
 
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-=head1 AUTHORS
+The development version lives at
+L<http://github.com/hanekomu/Error-Hierarchy/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+=head1 AUTHOR
+
+  Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2009 by the authors.
+This software is copyright (c) 2004 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 

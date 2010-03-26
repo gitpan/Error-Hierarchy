@@ -1,9 +1,10 @@
-This is the Perl module Error::Hierarchy.
+
+This is the Perl distribution Error-Hierarchy.
 
 ## Installation
 
-Error::Hierarchy installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+Error-Hierarchy installation is straightforward.
+If your CPAN shell is set up, you should just be able to do
 
     % cpan Error::Hierarchy
 
@@ -18,10 +19,9 @@ Then install it:
 
 ## Documentation
 
-Error::Hierarchy documentation is available as in POD. So you can do:
+Error-Hierarchy documentation is available as in POD.
+So you can do:
 
     % perldoc Error::Hierarchy
 
-to read the documentation online with your favorite pager.
-
-Marcel Gruenauer
+to read the documentation with your favorite pager.
