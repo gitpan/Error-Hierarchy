@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Error::Hierarchy::Internal::AbstractMethod;
-our $VERSION = '1.100850';
+BEGIN {
+  $Error::Hierarchy::Internal::AbstractMethod::VERSION = '1.100980';
+}
 # ABSTRACT: Exception for unimplemented methods
 use parent qw(Error::Hierarchy::Internal Class::Accessor);
 __PACKAGE__->mk_accessors(qw(method));
@@ -34,7 +36,7 @@ Error::Hierarchy::Internal::AbstractMethod - Exception for unimplemented methods
 
 =head1 VERSION
 
-version 1.100850
+version 1.100980
 
 =head1 SYNOPSIS
 
@@ -95,11 +97,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Error-Hierarchy/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Error-Hierarchy/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHOR
 

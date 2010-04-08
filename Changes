@@ -1,5 +1,9 @@
 Revision history for Perl extension Error-Hierarchy
 
+1.100980  2010-04-08 16:33:33 Europe/Vienna
+    - E::H::Util: added assert_named_args()
+    - removed unused variables
+
 1.100850  2010-03-26 23:52:38 Europe/Vienna
     - converted the distribution to Dist::Zilla-style
 

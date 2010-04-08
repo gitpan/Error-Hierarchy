@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Error::Hierarchy::Util;
-our $VERSION = '1.100850';
+BEGIN {
+  $Error::Hierarchy::Util::VERSION = '1.100980';
+}
 # ABSTRACT: Assertions and other tools
 use Data::Miscellany 'is_defined';
 use Error::Hierarchy::Mixin;    # to get UNIVERSAL::throw()
@@ -18,7 +20,7 @@ our %EXPORT_TAGS = (
     misc => [
         qw{
           assert_class assert_defined assert_read_only assert_is_integer
-          assert_getopt assert_enum load_class
+          assert_getopt assert_enum assert_named_args load_class
           }
     ],
 );
@@ -140,6 +142,40 @@ sub assert_getopt ($$) {
         custom_message => $custom_message);
 }
 
+sub assert_named_args {
+    my ($args, @args_spec) = @_;
+    my (%supported_args, @required_args);
+    for (@args_spec) {
+        /(^\+)?(.*)/;
+        my $required = defined $1 && $1 eq '+';
+        $supported_args{$2}++;
+        push @required_args => $2 if $required;
+    }
+    my @unsupported_args = grep { !$supported_args{$_} } keys %$args;
+    my @missing_required_args = grep { !defined $args->{$_} } @required_args;
+    return if @unsupported_args == 0 && @missing_required_args == 0;
+    my $sub = (caller(1))[3];
+    my $message = "$sub() called with illegal named arguments:\n";
+    if (@missing_required_args) {
+        local $" = ', ';
+        $message .= "    missing required arguments: @missing_required_args\n";
+    }
+    if (@unsupported_args) {
+        local $" = ', ';
+        $message .= "    unsupported arguments: @unsupported_args\n";
+    }
+    Error::Hierarchy::Internal::CustomMessage->throw(custom_message => $message);
+}
+
+sub assert_enum {
+    my ($val, $enum_arrayref, $custom_message) = @_;
+    for my $valid_value (@$enum_arrayref) {
+        return if $val eq $valid_value;
+    }
+    throw Error::Hierarchy::Internal::CustomMessage(
+        custom_message => "$custom_message: invalid value [$val]");
+}
+
 # support for "virtual" classes that do not exist as files.
 # this is of no use for payload reinstantiation in a new
 # process, as Storable calls require() before touching any
@@ -156,15 +192,6 @@ sub loader_callback {
         $loader_callback = $callback;
     }
     $loader_callback;
-}
-
-sub assert_enum {
-    my ($val, $enum_arrayref, $custom_message) = @_;
-    for my $valid_value (@$enum_arrayref) {
-        return if $val eq $valid_value;
-    }
-    throw Error::Hierarchy::Internal::CustomMessage(
-        custom_message => "$custom_message: invalid value [$val]");
 }
 
 sub load_class ($$) {
@@ -207,7 +234,7 @@ Error::Hierarchy::Util - Assertions and other tools
 
 =head1 VERSION
 
-version 1.100850
+version 1.100980
 
 =head1 SYNOPSIS
 
@@ -331,6 +358,27 @@ true, we just return. If it is false, we throw a special "help exception".
 
 This should be moved to C<Data::Conveyor>.
 
+=head2 assert_named_args(\%args, @args_spec)
+
+This function helps in validating named arguments passed to a method or
+function. The first argument is a reference to the hash of named arguments,
+the remaining arguments define which argument names are allowed. If an
+argument name starts with a C<+> sign, it means that this argument is
+mandatory.
+
+For example, assume your method only accepts the keys C<foo>, C<bar> and
+C<baz>, and C<bar> is mandatory. Usually you will write your method like this:
+
+    sub my_method {
+        my ($self, %args) = @_;
+        assert_named_args(\%args, qw(foo +bar baz));
+        # ...
+    }
+
+If there was a validation error, an exception of type
+L<Error::Hierarchy::Internal::CustomMessage> will be thrown with details about
+what went wrong.
+
 =head2 assert_enum()
 
 Takes a value and a reference to an array of valid values - that is, the
@@ -383,11 +431,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Error-Hierarchy/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Error-Hierarchy/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHOR
 

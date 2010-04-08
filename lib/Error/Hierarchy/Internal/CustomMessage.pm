@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Error::Hierarchy::Internal::CustomMessage;
-our $VERSION = '1.100850';
+BEGIN {
+  $Error::Hierarchy::Internal::CustomMessage::VERSION = '1.100980';
+}
 # ABSTRACT: Custom internal exception
 use parent 'Error::Hierarchy::Internal';
 __PACKAGE__->mk_accessors(qw(custom_message));
@@ -21,7 +23,7 @@ Error::Hierarchy::Internal::CustomMessage - Custom internal exception
 
 =head1 VERSION
 
-version 1.100850
+version 1.100980
 
 =head1 SYNOPSIS
 
@@ -62,11 +64,6 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Error-Hierarchy/>.
-
-The development version lives at
-L<http://github.com/hanekomu/Error-Hierarchy/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
 
 =head1 AUTHOR
 
