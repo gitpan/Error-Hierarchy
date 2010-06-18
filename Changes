@@ -1,5 +1,8 @@
 Revision history for Perl extension Error-Hierarchy
 
+1.101690  2010-06-18 12:26:02 Europe/Vienna
+    - E::H::Container: added delete_duplicate_exceptions()
+
 1.100980  2010-04-08 16:33:33 Europe/Vienna
     - E::H::Util: added assert_named_args()
     - removed unused variables

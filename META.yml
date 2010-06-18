@@ -10,7 +10,8 @@ build_requires:
   Test::More: 0.94
 configure_requires:
   ExtUtils::MakeMaker: 6.31
-generated_by: 'Dist::Zilla version 2.100960'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.101582, CPAN::Meta::Converter version 2.101591'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,71 +20,70 @@ name: Error-Hierarchy
 provides:
   Error::Hierarchy:
     file: lib/Error/Hierarchy.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Base:
     file: lib/Error/Hierarchy/Base.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Container:
     file: lib/Error/Hierarchy/Container.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal:
     file: lib/Error/Hierarchy/Internal.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::AbstractMethod:
     file: lib/Error/Hierarchy/Internal/AbstractMethod.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::Class:
     file: lib/Error/Hierarchy/Internal/Class.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::CustomMessage:
     file: lib/Error/Hierarchy/Internal/CustomMessage.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI:
     file: lib/Error/Hierarchy/Internal/DBI.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI::DBH:
     file: lib/Error/Hierarchy/Internal/DBI/DBH.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI::DRH:
     file: lib/Error/Hierarchy/Internal/DBI/DRH.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI::H:
     file: lib/Error/Hierarchy/Internal/DBI/H.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI::STH:
     file: lib/Error/Hierarchy/Internal/DBI/STH.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::DBI::Unknown:
     file: lib/Error/Hierarchy/Internal/DBI/Unknown.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::EmptyArrayRef:
     file: lib/Error/Hierarchy/Internal/EmptyArrayRef.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::EmptyHashRef:
     file: lib/Error/Hierarchy/Internal/EmptyHashRef.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::NoArrayRef:
     file: lib/Error/Hierarchy/Internal/NoArrayRef.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::NoHashRef:
     file: lib/Error/Hierarchy/Internal/NoHashRef.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::ReadOnlyAttribute:
     file: lib/Error/Hierarchy/Internal/ReadOnlyAttribute.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Internal::ValueUndefined:
     file: lib/Error/Hierarchy/Internal/ValueUndefined.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Mixin:
     file: lib/Error/Hierarchy/Mixin.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Test:
     file: lib/Error/Hierarchy/Test.pm
-    version: 1.100980
+    version: 1.101690
   Error::Hierarchy::Util:
     file: lib/Error/Hierarchy/Util.pm
-    version: 1.100980
-recommends: {}
+    version: 1.101690
 requires:
   Carp: 0
   Class::Accessor: 0
@@ -106,5 +106,5 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy
   homepage: http://search.cpan.org/dist/Error-Hierarchy/
-  repository: origin
-version: 1.100980
+  repository: http://github.com/hanekomu/Error-Hierarchy
+version: 1.101690

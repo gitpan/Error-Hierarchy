@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::DBI::DBH;
 BEGIN {
-  $Error::Hierarchy::Internal::DBI::DBH::VERSION = '1.100980';
+  $Error::Hierarchy::Internal::DBI::DBH::VERSION = '1.101690';
 }
 # ABSTRACT: DBI-related exception
 use parent 'Error::Hierarchy::Internal::DBI::H';
@@ -30,7 +30,7 @@ Error::Hierarchy::Internal::DBI::DBH - DBI-related exception
 
 =head1 VERSION
 
-version 1.100980
+version 1.101690
 
 =head1 DESCRIPTION
 
@@ -65,7 +65,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
+L<http://rt.cpan.org>.
 
 =head1 AVAILABILITY
 
@@ -73,6 +73,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Error-Hierarchy/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Error-Hierarchy/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHOR
 

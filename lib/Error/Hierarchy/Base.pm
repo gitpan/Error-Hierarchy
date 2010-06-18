@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Base;
 BEGIN {
-  $Error::Hierarchy::Base::VERSION = '1.100980';
+  $Error::Hierarchy::Base::VERSION = '1.101690';
 }
 # ABSTRACT: Base class for hierarchical exception classes
 use parent qw(
@@ -43,7 +43,7 @@ Error::Hierarchy::Base - Base class for hierarchical exception classes
 
 =head1 VERSION
 
-version 1.100980
+version 1.101690
 
 =head1 DESCRIPTION
 
@@ -61,18 +61,6 @@ list of pairs, from component name to initial value. For each pair, the named
 component is initialized by calling the method of the same name with the given
 value. If called with a single hash reference, it is dereferenced and its
 key/value pairs are set as described before.
-
-Creates and returns a new object. The constructor will accept as arguments a
-list of pairs, from component name to initial value. For each pair, the named
-component is initialized by calling the method of the same name with the given
-value. If called with a single hash reference, it is dereferenced and its
-key/value pairs are set as described before.
-
-Examples:
-
-  my $obj = Error::Hierarchy::Base->new;
-
-  my $obj = Error::Hierarchy::Base->new(%args);
 
 =head2 stringify
 
@@ -98,7 +86,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
+L<http://rt.cpan.org>.
 
 =head1 AVAILABILITY
 
@@ -106,6 +94,11 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
 site near you, or see
 L<http://search.cpan.org/dist/Error-Hierarchy/>.
+
+The development version lives at
+L<http://github.com/hanekomu/Error-Hierarchy/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
 =head1 AUTHOR
 

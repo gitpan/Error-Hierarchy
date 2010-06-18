@@ -406,11 +406,15 @@ BEGIN {
     my %skip = map { $_ => 1 } qw(
       App::FatPacker
       Class::Accessor::Classy
+      Devel::Cover
       Module::Install
       Moose::Role
-      Test::YAML::Meta
+      POE::Loop::Tk
+      Template::Test
+      Test::Kwalitee
       Test::Pod::Coverage
       Test::Portability::Files
+      Test::YAML::Meta
     );
 
     my $Test = Test::Builder->new;

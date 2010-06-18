@@ -2,7 +2,7 @@ NAME
     Error::Hierarchy - Support for hierarchical exception classes
 
 VERSION
-    version 1.100980
+    version 1.101690
 
 SYNOPSIS
         package Error::Hierarchy::ReadOnlyAttribute;
@@ -128,13 +128,18 @@ BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
+    <http://rt.cpan.org>.
 
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see
     <http://search.cpan.org/dist/Error-Hierarchy/>.
+
+    The development version lives at
+    <http://github.com/hanekomu/Error-Hierarchy/>. Instead of sending
+    patches, please fork this project using the standard git and github
+    infrastructure.
 
 AUTHOR
       Marcel Gruenauer <marcel@cpan.org>
