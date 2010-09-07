@@ -4,19 +4,32 @@ use warnings;
 
 package Error::Hierarchy::Container;
 BEGIN {
-  $Error::Hierarchy::Container::VERSION = '1.101690';
+  $Error::Hierarchy::Container::VERSION = '1.102500';
 }
 
-# ABSTRACT: Container for hierarchical exceptions
-use Data::Miscellany 'set_push';
+use Class::Trigger;
 
-# the exception container can be thrown as an exception as well, so inherit
-# from Error::Hierarchy::Base first (so we get its new(), not the one from
-# Data::Container)
+# ABSTRACT: Container for hierarchical exceptions
 use parent qw(
   Data::Container
   Error::Hierarchy::Base
 );
+
+sub items_push {
+    my ($self, @values) = @_;
+    $self->call_trigger('before_push', @values);
+    $self->SUPER::items_push(@values);
+
+}
+
+sub items_set_push {
+    my ($self, @values) = @_;
+
+    # Some methods won't work on non-E-H objects; report them so they appear
+    # directly - e.g., in the error.log if running under mod_perl
+    $self->call_trigger('before_push', @values);
+    $self->SUPER::items_set_push(@values);
+}
 
 sub record {
     my ($self, $exception_class, %args) = @_;
@@ -62,7 +75,7 @@ Error::Hierarchy::Container - Container for hierarchical exceptions
 
 =head1 VERSION
 
-version 1.101690
+version 1.102500
 
 =head1 SYNOPSIS
 
@@ -102,6 +115,18 @@ Deletes duplicate exceptions. Two exceptions are considered to be the same if
 they are of the same class and have the same properties, as defined by the
 exception's C<properties_as_hash()> method.
 
+=head2 items_push
+
+Overrides L<Data::Container>'s C<items_push()> method by calling the
+C<before_push> trigger before pushing. The list of items to be pushed is
+passed to the trigger. One possible use might be to warn if you try to push
+any items that are not derived from L<Error::Hierarchy>. The trigger mechanism
+is based on L<Class::Trigger>.
+
+=head2 items_set_push
+
+Similar to C<items_push()>.
+
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
@@ -117,17 +142,16 @@ L<http://rt.cpan.org>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see
-L<http://search.cpan.org/dist/Error-Hierarchy/>.
+site near you, or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-The development version lives at
-L<http://github.com/hanekomu/Error-Hierarchy/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
+The development version lives at L<http://github.com/hanekomu/Error-Hierarchy>
+and may be cloned from L<git://github.com/hanekomu/Error-Hierarchy>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
 
 =head1 AUTHOR
 
-  Marcel Gruenauer <marcel@cpan.org>
+Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

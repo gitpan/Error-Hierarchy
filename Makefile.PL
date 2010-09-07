@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
- BEGIN { require 5.008; } 
+BEGIN { require 5.008; }
 
 use ExtUtils::MakeMaker 6.31;
 
@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Support for hierarchical exception classes',
   'AUTHOR' => 'Marcel Gruenauer <marcel@cpan.org>',
   'BUILD_REQUIRES' => {
+    'Capture::Tiny' => '0',
     'English' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
@@ -29,6 +30,7 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'Class::Accessor' => '0',
     'Class::Accessor::Complex' => '0',
+    'Class::Trigger' => '0',
     'Data::Container' => '0',
     'Data::Dumper' => '0',
     'Data::Inherited' => '0',
@@ -44,7 +46,7 @@ my %WriteMakefileArgs = (
     'overload' => '0',
     'parent' => '0'
   },
-  'VERSION' => '1.101690',
+  'VERSION' => '1.102500',
   'test' => {
     'TESTS' => 't/*.t'
   }

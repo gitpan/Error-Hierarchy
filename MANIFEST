@@ -32,6 +32,7 @@ lib/Error/Hierarchy/Util.pm
 t/00-compile.t
 t/000-report-versions.t
 t/01_all.t
+t/02_trigger.t
 t/author-critic.t
 t/perlcriticrc
 t/release-check-changes.t
@@ -40,6 +41,7 @@ t/release-distmeta.t
 t/release-has-version.t
 t/release-kwalitee.t
 t/release-minimum-version.t
+t/release-no-tabs.t
 t/release-pod-coverage.t
 t/release-pod-spell.t
 t/release-pod-syntax.t

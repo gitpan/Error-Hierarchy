@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Base;
 BEGIN {
-  $Error::Hierarchy::Base::VERSION = '1.101690';
+  $Error::Hierarchy::Base::VERSION = '1.102500';
 }
 # ABSTRACT: Base class for hierarchical exception classes
 use parent qw(
@@ -43,7 +43,7 @@ Error::Hierarchy::Base - Base class for hierarchical exception classes
 
 =head1 VERSION
 
-version 1.101690
+version 1.102500
 
 =head1 DESCRIPTION
 
@@ -92,17 +92,16 @@ L<http://rt.cpan.org>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see
-L<http://search.cpan.org/dist/Error-Hierarchy/>.
+site near you, or see L<http://search.cpan.org/dist/Error-Hierarchy/>.
 
-The development version lives at
-L<http://github.com/hanekomu/Error-Hierarchy/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
+The development version lives at L<http://github.com/hanekomu/Error-Hierarchy>
+and may be cloned from L<git://github.com/hanekomu/Error-Hierarchy>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
 
 =head1 AUTHOR
 
-  Marcel Gruenauer <marcel@cpan.org>
+Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
