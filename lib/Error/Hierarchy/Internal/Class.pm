@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::Class;
 BEGIN {
-  $Error::Hierarchy::Internal::Class::VERSION = '1.102500';
+  $Error::Hierarchy::Internal::Class::VERSION = '1.102720';
 }
 # ABSTRACT: When you got an object of a wrong class
 use parent 'Error::Hierarchy::Internal';
@@ -23,7 +23,7 @@ Error::Hierarchy::Internal::Class - When you got an object of a wrong class
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 

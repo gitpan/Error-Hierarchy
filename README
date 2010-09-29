@@ -2,7 +2,7 @@ NAME
     Error::Hierarchy - Support for hierarchical exception classes
 
 VERSION
-    version 1.102500
+    version 1.102720
 
 SYNOPSIS
         package Error::Hierarchy::ReadOnlyAttribute;
@@ -128,7 +128,7 @@ BUGS AND LIMITATIONS
     No bugs have been reported.
 
     Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org>.
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 AVAILABILITY
     The latest version of this module is available from the Comprehensive

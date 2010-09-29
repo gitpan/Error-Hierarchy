@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Base;
 BEGIN {
-  $Error::Hierarchy::Base::VERSION = '1.102500';
+  $Error::Hierarchy::Base::VERSION = '1.102720';
 }
 # ABSTRACT: Base class for hierarchical exception classes
 use parent qw(
@@ -43,7 +43,7 @@ Error::Hierarchy::Base - Base class for hierarchical exception classes
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 DESCRIPTION
 
@@ -86,7 +86,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 

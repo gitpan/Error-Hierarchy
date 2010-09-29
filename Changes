@@ -1,5 +1,8 @@
 Revision history for Perl extension Error-Hierarchy
 
+1.102720  2010-09-29 14:21:00 Europe/Vienna
+    - DBI exceptions now also respect $Error::Depth
+
 1.102500  2010-09-07 18:15:36 Europe/Vienna
     - added a 'before_push' trigger for items_(set_)push(), based on
       Class::Trigger

@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Container;
 BEGIN {
-  $Error::Hierarchy::Container::VERSION = '1.102500';
+  $Error::Hierarchy::Container::VERSION = '1.102720';
 }
 
 use Class::Trigger;
@@ -75,7 +75,7 @@ Error::Hierarchy::Container - Container for hierarchical exceptions
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 SYNOPSIS
 
@@ -136,7 +136,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 

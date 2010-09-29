@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::AbstractMethod;
 BEGIN {
-  $Error::Hierarchy::Internal::AbstractMethod::VERSION = '1.102500';
+  $Error::Hierarchy::Internal::AbstractMethod::VERSION = '1.102720';
 }
 # ABSTRACT: Exception for unimplemented methods
 use parent qw(Error::Hierarchy::Internal Class::Accessor);
@@ -36,7 +36,7 @@ Error::Hierarchy::Internal::AbstractMethod - Exception for unimplemented methods
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 SYNOPSIS
 
@@ -89,7 +89,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 

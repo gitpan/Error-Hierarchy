@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::NoHashRef;
 BEGIN {
-  $Error::Hierarchy::Internal::NoHashRef::VERSION = '1.102500';
+  $Error::Hierarchy::Internal::NoHashRef::VERSION = '1.102720';
 }
 # ABSTRACT: When you expected a hash reference
 use parent 'Error::Hierarchy::Internal::CustomMessage';
@@ -20,7 +20,7 @@ Error::Hierarchy::Internal::NoHashRef - When you expected a hash reference
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 DESCRIPTION
 
@@ -43,7 +43,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 

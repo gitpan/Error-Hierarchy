@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::DBI;
 BEGIN {
-  $Error::Hierarchy::Internal::DBI::VERSION = '1.102500';
+  $Error::Hierarchy::Internal::DBI::VERSION = '1.102720';
 }
 # ABSTRACT: DBI-related exception
 use parent 'Error::Hierarchy::Internal::CustomMessage';
@@ -57,7 +57,7 @@ sub handler {
     sub {
         my ($err, $dbh, $retval) = @_;
         if (ref $dbh) {
-            my @context = caller;
+            my @context = caller($Error::Depth);
 
             # Assemble arguments for a handle exception.
             my @params = (
@@ -165,7 +165,7 @@ Error::Hierarchy::Internal::DBI - DBI-related exception
 
 =head1 VERSION
 
-version 1.102500
+version 1.102720
 
 =head1 SYNOPSIS
 
@@ -235,7 +235,7 @@ See perlmodinstall for information and options on installing Perl modules.
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Error-Hierarchy>.
 
 =head1 AVAILABILITY
 
