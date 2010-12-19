@@ -4,10 +4,11 @@ use warnings;
 
 package Error::Hierarchy::Container;
 BEGIN {
-  $Error::Hierarchy::Container::VERSION = '1.102720';
+  $Error::Hierarchy::Container::VERSION = '1.103530';
 }
 
 use Class::Trigger;
+use Error::Hierarchy::Util 'load_class';
 
 # ABSTRACT: Container for hierarchical exceptions
 use parent qw(
@@ -34,6 +35,7 @@ sub items_set_push {
 sub record {
     my ($self, $exception_class, %args) = @_;
 
+    load_class $exception_class, 1;
     # make record() invisible to caller when reporting exception location
     local $Error::Depth = $Error::Depth + 1;
     $self->items_set_push($exception_class->record(%args));
@@ -75,7 +77,7 @@ Error::Hierarchy::Container - Container for hierarchical exceptions
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

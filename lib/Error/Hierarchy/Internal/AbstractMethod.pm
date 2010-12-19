@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::AbstractMethod;
 BEGIN {
-  $Error::Hierarchy::Internal::AbstractMethod::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::AbstractMethod::VERSION = '1.103530';
 }
 # ABSTRACT: Exception for unimplemented methods
 use parent qw(Error::Hierarchy::Internal Class::Accessor);
@@ -36,7 +36,7 @@ Error::Hierarchy::Internal::AbstractMethod - Exception for unimplemented methods
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

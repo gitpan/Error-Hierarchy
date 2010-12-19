@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::ValueUndefined;
 BEGIN {
-  $Error::Hierarchy::Internal::ValueUndefined::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::ValueUndefined::VERSION = '1.103530';
 }
 # ABSTRACT: When you expected a defined value
 use parent 'Error::Hierarchy::Internal::CustomMessage';
@@ -20,7 +20,7 @@ Error::Hierarchy::Internal::ValueUndefined - When you expected a defined value
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

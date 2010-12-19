@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy;
 BEGIN {
-  $Error::Hierarchy::VERSION = '1.102720';
+  $Error::Hierarchy::VERSION = '1.103530';
 }
 # ABSTRACT: Support for hierarchical exception classes
 use Carp;
@@ -61,7 +61,8 @@ sub properties_as_hash {
 
 sub stringify {
     my $self = shift;
-    sprintf $self->message => map { $self->$_ || 'unknown' }
+    my $message = $self->message || $self->default_message;
+    sprintf $message => map { $self->$_ || 'unknown' }
       $self->get_properties;
 }
 
@@ -92,7 +93,7 @@ Error::Hierarchy - Support for hierarchical exception classes
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

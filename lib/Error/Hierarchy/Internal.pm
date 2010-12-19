@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal;
 BEGIN {
-  $Error::Hierarchy::Internal::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::VERSION = '1.103530';
 }
 # ABSTRACT: Base class for internal exceptions
 
@@ -31,7 +31,7 @@ Error::Hierarchy::Internal - Base class for internal exceptions
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

@@ -2,7 +2,7 @@ NAME
     Error::Hierarchy - Support for hierarchical exception classes
 
 VERSION
-    version 1.102720
+    version 1.103530
 
 SYNOPSIS
         package Error::Hierarchy::ReadOnlyAttribute;

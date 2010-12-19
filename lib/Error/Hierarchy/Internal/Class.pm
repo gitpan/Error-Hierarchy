@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::Class;
 BEGIN {
-  $Error::Hierarchy::Internal::Class::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::Class::VERSION = '1.103530';
 }
 # ABSTRACT: When you got an object of a wrong class
 use parent 'Error::Hierarchy::Internal';
@@ -23,7 +23,7 @@ Error::Hierarchy::Internal::Class - When you got an object of a wrong class
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

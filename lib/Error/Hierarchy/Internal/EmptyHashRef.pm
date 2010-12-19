@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::EmptyHashRef;
 BEGIN {
-  $Error::Hierarchy::Internal::EmptyHashRef::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::EmptyHashRef::VERSION = '1.103530';
 }
 # ABSTRACT: When you expected a non-empty hash reference
 use parent 'Error::Hierarchy::Internal::CustomMessage';
@@ -20,7 +20,7 @@ Error::Hierarchy::Internal::EmptyHashRef - When you expected a non-empty hash re
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

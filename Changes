@@ -1,5 +1,7 @@
 Revision history for Perl extension Error-Hierarchy
 
+1.103530  2010-12-19 22:25:32 Europe/Vienna
+
 1.102720  2010-09-29 14:21:00 Europe/Vienna
     - DBI exceptions now also respect $Error::Depth
 

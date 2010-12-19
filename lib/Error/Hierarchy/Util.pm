@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Util;
 BEGIN {
-  $Error::Hierarchy::Util::VERSION = '1.102720';
+  $Error::Hierarchy::Util::VERSION = '1.103530';
 }
 # ABSTRACT: Assertions and other tools
 use Data::Miscellany 'is_defined';
@@ -234,7 +234,7 @@ Error::Hierarchy::Util - Assertions and other tools
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

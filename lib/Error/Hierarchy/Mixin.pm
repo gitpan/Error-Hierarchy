@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Mixin;
 BEGIN {
-  $Error::Hierarchy::Mixin::VERSION = '1.102720';
+  $Error::Hierarchy::Mixin::VERSION = '1.103530';
 }
 # ABSTRACT: Provides often-used exception-related methods
 use Error;    # to get $Error::Depth
@@ -67,7 +67,7 @@ Error::Hierarchy::Mixin - Provides often-used exception-related methods
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

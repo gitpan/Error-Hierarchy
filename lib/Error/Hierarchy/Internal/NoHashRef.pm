@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::NoHashRef;
 BEGIN {
-  $Error::Hierarchy::Internal::NoHashRef::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::NoHashRef::VERSION = '1.103530';
 }
 # ABSTRACT: When you expected a hash reference
 use parent 'Error::Hierarchy::Internal::CustomMessage';
@@ -20,7 +20,7 @@ Error::Hierarchy::Internal::NoHashRef - When you expected a hash reference
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

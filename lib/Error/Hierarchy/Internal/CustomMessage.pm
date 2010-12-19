@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::CustomMessage;
 BEGIN {
-  $Error::Hierarchy::Internal::CustomMessage::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::CustomMessage::VERSION = '1.103530';
 }
 # ABSTRACT: Custom internal exception
 use parent 'Error::Hierarchy::Internal';
@@ -23,7 +23,7 @@ Error::Hierarchy::Internal::CustomMessage - Custom internal exception
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

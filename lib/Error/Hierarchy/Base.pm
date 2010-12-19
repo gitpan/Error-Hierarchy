@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Base;
 BEGIN {
-  $Error::Hierarchy::Base::VERSION = '1.102720';
+  $Error::Hierarchy::Base::VERSION = '1.103530';
 }
 # ABSTRACT: Base class for hierarchical exception classes
 use parent qw(
@@ -43,7 +43,7 @@ Error::Hierarchy::Base - Base class for hierarchical exception classes
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

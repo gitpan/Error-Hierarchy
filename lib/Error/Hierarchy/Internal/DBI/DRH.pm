@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::DBI::DRH;
 BEGIN {
-  $Error::Hierarchy::Internal::DBI::DRH::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::DBI::DRH::VERSION = '1.103530';
 }
 # ABSTRACT: DBI-related exception
 use parent 'Error::Hierarchy::Internal::DBI::H';
@@ -20,7 +20,7 @@ Error::Hierarchy::Internal::DBI::DRH - DBI-related exception
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 

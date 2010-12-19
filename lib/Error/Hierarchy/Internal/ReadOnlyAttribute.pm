@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::ReadOnlyAttribute;
 BEGIN {
-  $Error::Hierarchy::Internal::ReadOnlyAttribute::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::ReadOnlyAttribute::VERSION = '1.103530';
 }
 # ABSTRACT: When someone tried to set a read-only attribute
 use parent 'Error::Hierarchy::Internal';
@@ -23,7 +23,7 @@ Error::Hierarchy::Internal::ReadOnlyAttribute - When someone tried to set a read
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

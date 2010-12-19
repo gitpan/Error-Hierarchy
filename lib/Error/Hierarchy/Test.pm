@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Test;
 BEGIN {
-  $Error::Hierarchy::Test::VERSION = '1.102720';
+  $Error::Hierarchy::Test::VERSION = '1.103530';
 }
 # ABSTRACT: Tools to test hierarchical exceptions
 use Test::Builder;
@@ -67,7 +67,7 @@ Error::Hierarchy::Test - Tools to test hierarchical exceptions
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 SYNOPSIS
 

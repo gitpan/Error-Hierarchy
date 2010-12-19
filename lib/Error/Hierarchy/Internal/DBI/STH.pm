@@ -4,7 +4,7 @@ use warnings;
 
 package Error::Hierarchy::Internal::DBI::STH;
 BEGIN {
-  $Error::Hierarchy::Internal::DBI::STH::VERSION = '1.102720';
+  $Error::Hierarchy::Internal::DBI::STH::VERSION = '1.103530';
 }
 # ABSTRACT: DBI statement-related exception
 use Error::Hierarchy::Util 'load_class';
@@ -85,7 +85,7 @@ Error::Hierarchy::Internal::DBI::STH - DBI statement-related exception
 
 =head1 VERSION
 
-version 1.102720
+version 1.103530
 
 =head1 DESCRIPTION
 
